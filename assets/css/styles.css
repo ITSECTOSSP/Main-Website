@@ -486,7 +486,6 @@ iframe {
 }
 
 .div-hero {
-  padding: 1rem;
   border-radius: 20px;
   display: flex;
   max-width: 1280px;
@@ -498,7 +497,7 @@ iframe {
 .col-hero {
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .card-hero {
@@ -515,11 +514,14 @@ iframe {
 .row-row-hero {
   padding: 0px 0px 0px 0px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .row-row-col {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .link {
