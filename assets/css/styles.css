@@ -346,9 +346,6 @@ iframe {
 .col-image {
   width: 100%;
   height: 400px;
-  background-size: cover;
-  background-image: url("../../assets/img/hero-home.png");
-  background-origin: padding-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -357,7 +354,6 @@ iframe {
 .ossp-heading {
   font-weight: bolder;
   font-size: xx-large;
-  display: flex;
 }
 
 :root {
@@ -496,6 +492,7 @@ iframe {
   max-width: 1280px;
   width: 100%;
   justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .col-hero {
@@ -525,11 +522,7 @@ iframe {
   justify-content: center;
 }
 
-#link-about {
-  color: var(--bs-body-bg);
-}
-
-#link-about {
+.link {
   text-decoration: none;
   border: solid var(--bs-body-bg);
   padding: 1rem;
@@ -538,28 +531,12 @@ iframe {
   width: 100%;
 }
 
-#link-about:hover {
+.link:hover {
   text-decoration: none;
   border: none;
   padding: 1rem;
   border-radius: 10px;
   background: var(--bs-tertiary-color);
   color: var(--bs-blue);
-}
-
-#link-services {
-  background: var(--bs-tertiary-color);
-  text-decoration: blink;
-  padding: 1rem;
-  width: 100%;
-}
-
-#link-services:hover {
-  background: none;
-  text-decoration: blink;
-  padding: 1rem;
-  color: var(--bs-body-bg);
-  border: solid var(--bs-body-bg);
-  border-radius: 10px;
 }
 
