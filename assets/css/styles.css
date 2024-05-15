@@ -524,6 +524,13 @@ iframe {
   flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+  .row-hero-btn {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
 .link {
   text-decoration: none;
   border: solid var(--bs-body-bg);
@@ -540,5 +547,9 @@ iframe {
   border-radius: 10px;
   background: var(--bs-tertiary-color);
   color: var(--bs-blue);
+}
+
+.section-hero {
+  padding: 1rem;
 }
 
