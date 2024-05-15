@@ -354,12 +354,6 @@ iframe {
   align-items: center;
 }
 
-.card-hero {
-  width: 100%;
-  color: var(--bs-body-bg);
-  align-items: center;
-}
-
 .ossp-heading {
   font-weight: bolder;
   font-size: xx-large;
@@ -495,7 +489,6 @@ iframe {
   --bs-form-invalid-border-color: #dc3545;
 }
 
-
 .div-hero {
   padding: 1rem;
   border-radius: 20px;
@@ -569,6 +562,4 @@ iframe {
   border: solid var(--bs-body-bg);
   border-radius: 10px;
 }
-
-
 
