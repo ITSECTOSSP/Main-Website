@@ -8,7 +8,7 @@
 }
 
 .navbar {
-  background: var(--bs-body-bg);
+  background: var(--bs-white);
   align-items: center;
   font-size: large;
 }
@@ -49,14 +49,15 @@
 .sticky {
   position: fixed;
   width: 100%;
-  background-color: var(--bs-body-bg);
+  background-color: var(--bs-white);
   top: 0;
 }
 
 .about-card {
-  background-image: url("../../assets/img/Copy%20of%20OSSP%202024.png");
+  background-image: url("../../assets/img/OSSP%202024.png");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -88,7 +89,7 @@
 }
 
 .nav-item .nav-link.active {
-  background-color: var(--bs-body-bg);
+  background-color: var(--bs-white);
   border: solid 2px;
   border: solid var(--bs-black);
   color: var(--bs-black)!important;
@@ -142,7 +143,7 @@ col {
 
 .hist-card {
   background: var(--bs-secondary-color);
-  color: var(--bs-secondary-bg);
+  color: var(--bs-white);
   border-radius: 1rem;
 }
 
@@ -630,7 +631,7 @@ iframe {
 
 .measure-card-body {
   background: var(--bs-tertiary-color);
-  color: var(--bs-body-bg);
+  color: var(--bs-white);
   padding: 2rem;
 }
 
@@ -649,10 +650,10 @@ iframe {
 .link-btn {
   width: 100%;
   background: var(--bs-tertiary-color);
-  color: var(--bs-body-bg);
+  color: var(--bs-white);
   padding: 1rem;
   border-radius: 10px;
-  border: solid var(--bs-body-bg);
+  border: solid var(--bs-white);
 }
 
 .link-btn:hover {
@@ -660,12 +661,63 @@ iframe {
   padding: 1rem;
   border: solid var(--bs-emphasis-color);
   border-radius: 10px;
-  background: var(--bs-body-bg);
+  background: var(--bs-white);
 }
 
-.row-link-meas {
+.tb-header-parent {
+  width: 100%;
+  overflow: hidden;
 }
 
-.col-dock-meas {
+#tb-header-child-dock {
+  width: 15%;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+#tb-child-dock {
+  width: 15%;
+  padding: 1rem;
+}
+
+#tb-header-child-title {
+  width: 60%;
+  padding: 1rem;
+}
+
+#tb-child-title {
+  width: 60%;
+  padding: 1rem;
+}
+
+#tb-header-child-cc {
+  width: 15%;
+  padding: 1rem;
+}
+
+#tb-child-cc {
+  width: 15%;
+  padding: 1rem;
+}
+
+.table-responsive {
+  display: flex;
+  overflow: hidden;
+}
+
+.tb-cell-row {
+  width: 100%;
+}
+
+.tb-cel-body {
+  width: inherit;
+}
+
+thead {
+  width: 100%;
+}
+
+.tbcell {
+  width: 100%;
 }
 
