@@ -492,23 +492,24 @@ iframe {
   grid-template-rows: 2fr 2fr 1fr;
   grid-template-areas: 'first first third' 'second second third';
   width: 100%;
-  height: fit-content;
   margin: 0;
+  height: fit-content;
 }
 
 @media (max-width: 768px) {
   .home-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 25% 35% 20%;
+    grid-template-rows: 25% 45% 20%;
     grid-template-areas: 'first' 'second' 'third';
+    height: fit-content;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 576px) {
   .home-grid {
-     grid-template-columns: 1fr;
-     grid-template-rows: 30% 40% 20%;
-     grid-template-areas: 'first' 'second' 'third';
+    grid-template-columns: 1fr;
+    grid-template-rows: 30% 40% 20%;
+    grid-template-areas: 'first' 'second' 'third';
   }
 }
 
@@ -973,14 +974,17 @@ iframe {
 }
 
 .div-card {
-  min-width: fit-content;
+  min-width: 100%;
   margin-top: 1rem;
+  min-height: 100%;
+  display: flex;
+  padding: 1rem;
 }
 
 .card-dept-head {
   max-width: 60%;
   text-align: center;
-  box-shadow: 7px 10px 20px 1px var(--ossp-grey);
+  box-shadow: 7px 10px 20px 1px var(--ossp-brown);
 }
 
 @media (max-width: 768px) {
@@ -1103,6 +1107,7 @@ h4 {
 .main-row-footer {
   display: flex;
   padding: 1rem;
+  align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -1247,7 +1252,7 @@ h4 {
 
 .row-return {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
 }
 
@@ -1281,12 +1286,12 @@ h4 {
 }
 
 .div-card {
-  box-shadow: 7px 10px 20px 1px var(--ossp-grey);
+  box-shadow: 7px 10px 20px 1px var(--ossp-blue);
 }
 
 .card-sub-about {
   width: 80%;
-  box-shadow: 7px 10px 20px 1px var(--ossp-grey);
+  box-shadow: 7px 10px 20px 1px var(--ossp-brown);
 }
 
 @media (max-width: 768px) {
@@ -1294,5 +1299,102 @@ h4 {
     width: 100%;
     margin: 5px;
   }
+}
+
+.link-image {
+  display: flex;
+  min-width: fit-content;
+}
+
+.card-body-profa {
+  width: 300px;
+  height: 300px;
+  background: url("../../assets/img/Mila.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.card-body-profe {
+  width: 300px;
+  height: 300px;
+  background: url("../../assets/img/Anjo.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 13px;
+}
+
+.card-body-profc {
+  width: 300px;
+  height: 300px;
+  background: url("../../assets/img/Icy.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 14px;
+}
+
+.card-body-profd {
+  width: 300px;
+  height: 300px;
+  background: url("../../assets/img/John.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 14px;
+}
+
+.card-body-profb {
+  width: 300px;
+  height: 300px;
+  background: url("../../assets/img/Janet.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 13px;
+}
+
+.card-body-proff {
+  width: 300px;
+  height: 300px;
+  background: url("../../assets/img/Art.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 13px;
+}
+
+.picture-prof-div {
+  width: 250px;
+  height: 250px;
+  align-items: center;
+  background-color: var(--ossp-blue);
+  border-radius: 50%;
+  padding-bottom: 1rem;
+  box-shadow: 7px 10px 20px 1px var(--ossp-grey);
+}
+
+.picture-prof-head {
+  width: 250px;
+  height: 250px;
+  align-items: center;
+  background-color: var(--ossp-brown);
+  border-radius: 50%;
+  padding-bottom: 1rem;
+  box-shadow: 7px 10px 20px 1px var(--ossp-grey);
+  display: flex;
+}
+
+.profile-col {
+  padding: 0rem 2rem 0rem;
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.profile-row {
+  padding: 0rem 0rem;
+  margin: 0rem;
 }
 
