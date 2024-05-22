@@ -504,6 +504,14 @@ iframe {
   }
 }
 
+@media (max-width: 340px) {
+  .home-grid {
+     grid-template-columns: 1fr;
+     grid-template-rows: 30% 40% 20%;
+     grid-template-areas: 'first' 'second' 'third';
+  }
+}
+
 .docket-card {
   background: transparent;
   border: none;
