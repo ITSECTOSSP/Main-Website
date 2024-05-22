@@ -504,7 +504,7 @@ iframe {
   }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 500px) {
   .home-grid {
      grid-template-columns: 1fr;
      grid-template-rows: 30% 40% 20%;
