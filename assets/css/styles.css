@@ -1490,6 +1490,8 @@ h4 {
   --bs-btn-disabled-bg: var(--ossp-grey);
   --bs-btn-disabled-border-color: var(--ossp-light);
   justify-content: center;
+  width: 50%;
+  height: 50%;
 }
 
 
