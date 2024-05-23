@@ -44,7 +44,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const generatePagination = () => {
                 pagination.innerHTML = ''; // Clear pagination
                 const pageCount = Math.ceil(data.length / itemsPerPage);
-                for (let i = 1; i <= pageCount; i++) {
+
+                // Create First button
+                const firstItem = document.createElement('li');
+                firstItem.innerHTML = `<a href="#" class="page-link">First</a>`;
+                firstItem.addEventListener('click', () => {
+                    currentPage = 1;
+                    displayData(currentPage);
+                    generatePagination();
+                });
+                pagination.appendChild(firstItem);
+
+                // Determine start and end page numbers
+                let startPage = Math.max(currentPage - 2, 1);
+                let endPage = Math.min(startPage + 4, pageCount);
+
+                if (endPage - startPage < 4) {
+                    startPage = Math.max(endPage - 4, 1);
+                }
+
+                // Create page number buttons
+                for (let i = startPage; i <= endPage; i++) {
                     const listItem = document.createElement('li');
                     listItem.innerHTML = `<a href="#" class="page-link">${i}</a>`;
                     if (i === currentPage) {
@@ -57,6 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     pagination.appendChild(listItem);
                 }
+
+                // Create Last button
+                const lastItem = document.createElement('li');
+                lastItem.innerHTML = `<a href="#" class="page-link">Last</a>`;
+                lastItem.addEventListener('click', () => {
+                    currentPage = pageCount;
+                    displayData(currentPage);
+                    generatePagination();
+                });
+                pagination.appendChild(lastItem);
             };
 
             // Initial display of data and pagination
@@ -67,7 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const filterTable = () => {
                 const searchText = searchInput.value.toLowerCase();
                 const filteredData = data.filter(item => item.Sp.toLowerCase().includes(searchText) || item.Title.toLowerCase().includes(searchText));
-                displayData(1); // Reset to first page
+                data = filteredData; // Update data with filtered data
+                currentPage = 1; // Reset to first page
+                displayData(currentPage); // Display first page of filtered data
                 generatePagination(); // Update pagination controls
             };
 
