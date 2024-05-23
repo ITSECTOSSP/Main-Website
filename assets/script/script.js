@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <th scope="row">${index + 1}</th>
-                    <td>${item.SP}</td>
+                    <td>${item.Sp}</td>
                     <td>${item.Title}</td>
                     <td>
-                        <button class="btn btn-success" style="margin-left: 5px;" type="button" data-link="${item.Link}">
+                        <button class="btn btn-success" style="margin-left: 5px;" type="button" data-link="${item.Iframe}">
                             <i class="glyphicon glyphicon-link" style="font-size: 30px;"></i>
                         </button>
                     </td>
