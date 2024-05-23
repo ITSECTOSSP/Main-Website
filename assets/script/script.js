@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${item.Sp}</td>
                     <td>${item.Title}</td>
                     <td>
-                        <a href="${item.Iframe}/edit" target="_blank" class="btn btn-success" style="margin-left: 5px;" type="button">
+                        <a href="${item.Iframe}/preview" target="_blank" class="btn btn-success" style="margin-left: 5px;" type="button">
                             <i class="glyphicon glyphicon-link" style="font-size: 30px;"></i>
                         </a>
                     </td>
