@@ -1,26 +1,51 @@
-$(document).ready(function() {
-  $(".search").keyup(function () {
-    var searchTerm = $(".search").val();
-    var listItem = $('.results tbody').children('tr');
-    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-    
-  $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-    }
-  });
-    
-  $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-    $(this).attr('visible','false');
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('https://itsectossp.github.io/jsonapi/csvjson.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Fetched JSON data:', data);
+            const tableBody = document.getElementById('table-body');
+            const searchInput = document.querySelector('.search.form-control');
 
-  $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-    $(this).attr('visible','true');
-  });
+            // Function to filter table rows based on search input
+            const filterTable = () => {
+                const searchText = searchInput.value.toLowerCase();
+                const rows = tableBody.getElementsByTagName('tr');
+                for (let row of rows) {
+                    const cells = row.getElementsByTagName('td');
+                    let rowContainsSearchText = false;
+                    for (let cell of cells) {
+                        if (cell.textContent.toLowerCase().includes(searchText)) {
+                            rowContainsSearchText = true;
+                            break;
+                        }
+                    }
+                    row.style.display = rowContainsSearchText ? '' : 'none';
+                }
+            };
 
-  var jobCount = $('.results tbody tr[visible="true"]').length;
-    $('.counter').text(jobCount + ' item');
+            // Add event listener to search input
+            searchInput.addEventListener('input', filterTable);
 
-  if(jobCount == '0') {$('.no-result').show();}
-    else {$('.no-result').hide();}
-		  });
+            // Populate table rows
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <th scope="row">${index + 1}</th>
+                    <td>${item.Sp}</td>
+                    <td>${item.Title}</td>
+                    <td>
+                        <a href="${item.Iframe}/edit" target="_blank" class="btn btn-success" style="margin-left: 5px;" type="button">
+                            <i class="glyphicon glyphicon-link" style="font-size: 30px;"></i>
+                        </a>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
 });
