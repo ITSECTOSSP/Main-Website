@@ -24,11 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 paginatedItems.forEach((item, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <th scope="row">${start + index + 1}</th>
+                        <th style="display:none;" scope="row">${start + index + 1}</th>
                         <td>${item.Sp}</td>
                         <td>${item["PO No"]}</td>
                         <td>${item.Title}</td>
                         <td>
+
+                        
                             <button class="btn btn-success" style="margin-left: 5px;" type="button" data-link="${item.Iframe}/edit">
                                 <i class="glyphicon glyphicon-link" style="font-size: 30px;"></i>
                             </button>
