@@ -1474,3 +1474,24 @@ h4 {
   border-radius: var(--bs-dropdown-border-radius);
 }
 
+.btn-success {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--ossp-grey);
+  --bs-btn-border-color: var(--ossp-brown);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--ossp-dark);
+  --bs-btn-hover-border-color: var(--ossp-brown);
+  --bs-btn-focus-shadow-rgb: 60,153,110;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--ossp-blue);
+  --bs-btn-active-border-color: var(--ossp-dark);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--ossp-grey);
+  --bs-btn-disabled-border-color: var(--ossp-light);
+  width: 30%;
+  justify-content: center;
+  padding: .5rem;
+}
+
+
