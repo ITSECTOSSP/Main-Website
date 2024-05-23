@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const tableBody = document.getElementById('table-body');
 
             // Pagination variables
-            const itemsPerPage = 10;
+            const itemsPerPage = 50;
             let currentPage = 1;
 
             // Function to display data
