@@ -16,12 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${item.Sp}</td>
                     <td>${item.Title}</td>
                     <td>
-                        <a href="${item.Iframe}/preview" target="_blank" class="btn btn-success" style="margin-left: 5px;" type="button">
+                        <button class="btn btn-success" style="margin-left: 5px;" type="button" data-link="${item.Iframe}/preview">
                             <i class="glyphicon glyphicon-link" style="font-size: 30px;"></i>
-                        </a>
+                        </button>
                     </td>
                 `;
                 tableBody.appendChild(row);
+            });
+
+            document.querySelectorAll('.btn-success').forEach(button => {
+                button.addEventListener('click', function() {
+                    const link = this.getAttribute('data-link');
+                    const iframe = document.createElement('iframe');
+                    iframe.src = link;
+                    iframe.width = '100%';
+                    iframe.height = '500px';
+                    document.body.appendChild(iframe);
+                });
             });
         })
         .catch(error => console.error('Error fetching JSON:', error));
