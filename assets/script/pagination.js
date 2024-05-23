@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const pagination = document.querySelector('.pagination');
 
             // Constants for pagination
-            const itemsPerPage = 10;
+            const itemsPerPage = 100;
             let currentPage = 1;
 
             // Function to display data for the current page
