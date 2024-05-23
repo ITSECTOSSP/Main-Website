@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const item = data[0];
 
             // Update the card elements with JSON data
-            document.querySelector('.docket').innerText = item.Type;
+            document.querySelector('.docket').innerText = item.Sp;
             document.querySelector('.dock-date').innerText = item['Date Enact/Adopt'];
             document.querySelector('.title').innerText = item.Title;
 
