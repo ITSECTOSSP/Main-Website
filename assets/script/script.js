@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     fetch('https://itsectossp.github.io/jsonapi/csvjson.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log('Fetched JSON data:', data);
             const tableBody = document.getElementById('table-body');
             data.forEach((item, index) => {
                 const row = document.createElement('tr');
