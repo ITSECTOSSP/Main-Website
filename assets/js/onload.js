@@ -43,6 +43,21 @@ const observer = new IntersectionObserver(entries => {
     dots[slideIndex-1].className += " active";
   }
 
+  let slideIndexing = 0;
+showSliders();
+
+  function showSliders() {
+    let i;
+    let slides = document.getElementsByClassName("ban-parent");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndexing++;
+    if (slideIndexing > slides.length) {slideIndexing = 1}
+    slides[slideIndexing-1].style.display = "block";
+    setTimeout(showSliders, 10000); // Change image every 2 seconds
+  }
+
   const observ = new IntersectionObserver((entries) =>{
     entries.forEach((entry) => {
       console.log(entry)
