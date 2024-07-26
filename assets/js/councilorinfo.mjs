@@ -69,7 +69,7 @@ async function displayDistrictInfo() {
     }
 }
 
-/// Function to display proposed measures based on councilor data
+// Function to display proposed measures based on councilor data
 async function displayProposedMeasures() {
     // Get the elements for ordinance and resolution listings
     const ordinanceList = document.getElementById('ordinance-listing');
@@ -88,15 +88,21 @@ async function displayProposedMeasures() {
         // Extract introducer names from councilor data
         const introducerName = councilorInfoEl.textContent.trim(); // Get the introducer name from the councilor info element
 
+        // Helper function to check if introducerName is in item.introducer
+        function isIntroducerInItem(introducer, itemIntroducer) {
+            const introducers = itemIntroducer.split(',').map(name => name.trim());
+            return introducers.includes(introducer);
+        }
+
         // Filter proposed data for ordinances and resolutions
         const filteredOrdinanceData = proposedData.filter(item => 
-            item.introducer === introducerName &&
+            isIntroducerInItem(introducerName, item.introducer) &&
             item.spno !== "No Data" &&
             item.Type === "ORDINANCE"
         );
 
         const filteredResolutionData = proposedData.filter(item => 
-            item.introducer === introducerName &&
+            isIntroducerInItem(introducerName, item.introducer) &&
             item.spno !== "No Data" &&
             item.Type === "RESOLUTION"
         );
@@ -156,3 +162,4 @@ document.addEventListener('DOMContentLoaded', async function() {
     await displayDistrictInfo();
     await displayProposedMeasures();
 });
+
