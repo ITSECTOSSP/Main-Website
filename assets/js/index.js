@@ -105,8 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
       artCards.forEach((card, index) => {
           if (index >= currentIndex && index < currentIndex + visibleCards) {
               card.style.display = "flex";
+              card.style.animation = "enter-animation 1s ease";
           } else {
               card.style.display = "none";
+              card.style.animation = "out-animation 1s ease";
           }
       });
 
@@ -287,14 +289,14 @@ function createCalendar(date, side) {
    });
    monthTitle.innerHTML = `${monthName} ${yearNum}`;
 
-   if (side == "left") {
-      gridTable.className = "animated fadeOutRight";
-   } else {
-      gridTable.className = "animated fadeOutLeft";
+   if (side === "left") {
+      gridTable.className = "ban-animation";
+   } else if (side === "right") {
+      gridTable.className = "exit-ban-animation";
    }
 
    setTimeout(() => {
-      gridTable.innerHTML = " ";
+      gridTable.innerHTML = "";
 
       var newTr = document.createElement("div");
       newTr.className = "row";
@@ -306,8 +308,7 @@ function createCalendar(date, side) {
          currentTr.appendChild(emptyDivCol);
       }
 
-      var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-      lastDay = lastDay.getDate();
+      var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
       for (let i = 1; i <= lastDay; i++) {
          if (currentTr.children.length >= 7) {
@@ -315,7 +316,8 @@ function createCalendar(date, side) {
          }
          let currentDay = document.createElement("div");
          currentDay.className = "col";
-         if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
+         if (selectedDayBlock == null && i === currentDate.getDate() ||
+             selectedDate.toDateString() === new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
             selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
 
             document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", {
@@ -332,7 +334,7 @@ function createCalendar(date, side) {
          }
          currentDay.innerHTML = i;
 
-         //show marks
+         // Show marks
          if (globalEventObj[new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()]) {
             let eventMark = document.createElement("div");
             eventMark.className = "day-mark";
@@ -348,11 +350,10 @@ function createCalendar(date, side) {
          currentTr.appendChild(emptyDivCol);
       }
 
-      if (side == "left") {
-         gridTable.className = "animated fadeInLeft";
-      } else {
-         gridTable.className = "animated fadeInRight";
-      }
+      // Reset animation class after a small delay
+      setTimeout(() => {
+         gridTable.className = ""; // Remove animation classes
+      }, 1000); // This duration should match the length of your CSS animations
 
       function addNewRow() {
          let node = document.createElement("div");
@@ -378,11 +379,12 @@ var nextButton = document.getElementById("next");
 prevButton.onclick = function changeMonthPrev() {
    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
    createCalendar(currentDate, "left");
-}
+};
+
 nextButton.onclick = function changeMonthNext() {
    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
    createCalendar(currentDate, "right");
-}
+};
 
 function addEvent(title, desc) {
    if (!globalEventObj[selectedDate.toDateString()]) {
