@@ -26,7 +26,7 @@ async function displayCommitteeInfo() {
         const committee = committeeChairData.find(item => Number(item.idchar) === idcoun); // Convert item.idchar to number
 
         if (committee) {
-            committeeNameEl.textContent = committee.committeeName;
+            committeeNameEl.textContent = `Committee on ${committee.committeeName}`;
 
             // Find the chair's name using the councilor data and chair's idcoun
             const chair = councilorData.find(item => Number(item.idcoun) === Number(committee.committeeChair));
