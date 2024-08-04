@@ -167,31 +167,20 @@
         <section id="regulatories-backdrop" class="tbl-head-section">
             <div class="banner-legis">
                 <div class="container container-legis-banner">
-                    <h1 id="sp-no" class="container-legis">SPNO</h1>
+                    <h1 id="committee-name" class="container-legis">Committee</h1>
                 </div>
             </div>
         </section>
         <div class="content-res-wrapper">
             <div class="resource-content">
-                <div class="content-wrapper-resource"><a id="pdf-link" class="pdf-viewer" href="#" target="_blank">View PDF</a>
-                    <h1 id="info-matter">PROPOSED</h1>
-                    <h1>Title</h1><span id="title-resource">Title</span>
-                    <h1>Introducer</h1><span id="introducer-resource">Introducer</span>
-                </div>
-                <div>
-                    <h1>Committee Referred</h1>
-                    <div class="row committee-row" id="committee-listing"></div>
-                </div>
-                <div class="row reading-rows">
-                    <div class="col reading-info-wrap">
-                        <h2>First Reading</h2><span id="fr-infor-resource" class="read-info">First Reading</span><span id="fr-date-resource">First Reading Date</span>
-                    </div>
-                    <div class="col reading-info-wrap">
-                        <h2>Second Reading</h2><span id="sr-infor-resource" class="read-info">Second Reading</span><span id="sr-date-resource">Second Reading Date</span>
-                    </div>
-                    <div class="col reading-info-wrap">
-                        <h2>Third Reading</h2><span id="tr-infor-resource" class="read-info">Third Reading</span><span id="tr-date-resource">Third Reading Date</span>
-                    </div>
+                <div class="committee-content">
+                    <h1 id="comm-chair">Chairperson</h1><a id="chair-comm" href="#">Link</a>
+                    <h1>Vice-Chairperson</h1>
+                    <div id="vice-chair" class="committee-content"><span>Title</span></div>
+                    <h1>Ex-Officio</h1>
+                    <div id="exofficio" class="committee-content"><span>Title</span></div>
+                    <h1>Members</h1>
+                    <div id="comm-members" class="committee-content"><span>Title</span></div>
                 </div>
             </div>
         </div>
@@ -268,7 +257,7 @@
     </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/approvedres.mjs" type="module"></script>
+    <script src="assets/js/committeeinfo.mjs" type="module"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/source.mjs" type="module"></script>
 </body>

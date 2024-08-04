@@ -1,6 +1,6 @@
 import { fetchDataProposed } from './source.mjs';
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
     console.log('DOMContentLoaded event triggered. Fetching data...');
 
     const items = await fetchDataProposed();
@@ -25,30 +25,32 @@ document.addEventListener('DOMContentLoaded', async function() {
         items.forEach((item, index) => {
             const card = document.createElement('div');
             card.className = 'details-card';
-            if (index === 0) card.classList.add('active'); // Show the first card initially
+            if (index === 0) {
+                card.classList.add('active', 'ban-animation'); // Show the first card initially with enter animation
+            }
             card.innerHTML = `
-           <a href="resourceapp.html?spno=${encodeURIComponent(item.spno)}&year=${item.Year}&proposed=${encodeURIComponent(item.proposed)}&title=${encodeURIComponent(item.Title)}&introducer=${encodeURIComponent(item.introducer)}&frDate=${encodeURIComponent(item.FrDate)}&frReading=${encodeURIComponent(item.FrReading)}&srDate=${encodeURIComponent(item.ScndDate)}&srReading=${encodeURIComponent(item.ScndReading)}&trDate=${encodeURIComponent(item.ThDate)}&trReading=${encodeURIComponent(item.ThReading)} &trReading=${encodeURIComponent(item.ThReading)}&pdflink=${encodeURIComponent(item.Pdflink)}">
-                <div class="art-card-container">
-                    <div class="card-container-inner">
-                        <h1 id="sp-num" class="ban-animation">${item.spno}</h1>
-                        <hr />
-                        <h2 id="propo-num" class="ban-animation">${item.proposed}</h2>
-                        <span>Introducer</span>
-                        <span id="introducer-name" class="ban-animation">${item.introducer}</span>
+                <a href="resourceapp.html?spno=${encodeURIComponent(item.spno)}&year=${item.Year}&proposed=${encodeURIComponent(item.proposed)}&title=${encodeURIComponent(item.Title)}&introducer=${encodeURIComponent(item.introducer)}&frDate=${encodeURIComponent(item.FrDate)}&frReading=${encodeURIComponent(item.FrReading)}&srDate=${encodeURIComponent(item.ScndDate)}&srReading=${encodeURIComponent(item.ScndReading)}&trDate=${encodeURIComponent(item.ThDate)}&trReading=${encodeURIComponent(item.ThReading)}&pdflink=${encodeURIComponent(item.Pdflink)}">
+                    <div class="art-card-container">
+                        <div class="card-container-inner">
+                            <h1 id="sp-num" class="ban-animation">${item.spno}</h1>
+                            <hr />
+                            <h2 id="propo-num" class="ban-animation">${item.proposed}</h2>
+                            <span>Introducer</span>
+                            <span id="introducer-name" class="ban-animation">${item.introducer}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="art-card-div">
-                    <span>Legislation Spotlight</span>
-                </div>
-                <div class="date-card ban-animation">
-                    <span id="date-app">Date Approved: ${formatDate(item.postingd)}</span>
-                </div>
-                <div class="title-card">
-                    <span>Title</span>
-                    <p id="title-meas" class="ban-animation">
-                        <span style="color: rgb(0, 0, 0);">${item.title}</span><br /><br />
-                    </p>
-                </div>
+                    <div class="art-card-div">
+                        <span>Legislation Spotlight</span>
+                    </div>
+                    <div class="date-card ban-animation">
+                        <span id="date-app">Date Docketed: ${formatDate(item.dockdate)}</span>
+                    </div>
+                    <div class="title-card">
+                        <span>Title</span>
+                        <p id="title-meas" class="ban-animation">
+                            <span style="color: rgb(0, 0, 0);">${item.title}</span><br /><br />
+                        </p>
+                    </div>
                 </a>
             `;
             container.appendChild(card);
@@ -69,9 +71,21 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         let currentIndex = 0;
         setInterval(() => {
-            cards[currentIndex].classList.remove('active');
+            const currentCard = cards[currentIndex];
+            // Remove the active class and add the exit animation class
+            currentCard.classList.remove('active', 'ban-animation');
+            currentCard.classList.add('exit-ban-animation');
+
+            // Listen for animation end to remove the exit animation class
+            currentCard.addEventListener('animationend', () => {
+                currentCard.classList.remove('exit-ban-animation');
+            }, { once: true });
+
+            // Move to the next card
             currentIndex = (currentIndex + 1) % cards.length;
-            cards[currentIndex].classList.add('active');
+            const nextCard = cards[currentIndex];
+            // Add the active class and enter animation class to the new card
+            nextCard.classList.add('active', 'ban-animation');
         }, 5000); // Change the interval to 5000ms (5 seconds)
     }
 

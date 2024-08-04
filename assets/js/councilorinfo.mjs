@@ -1,5 +1,18 @@
 import { fetchCouncilorsData, fetchCommitteeChairData, fetchDataProposed } from './source.mjs';
 
+// Function to normalize strings by trimming, normalizing Unicode, and removing special characters
+function normalizeString(str) {
+    return str ? str.trim().normalize('NFKC').toLowerCase().replace(/[\s'"“”]+/g, ' ') : '';
+}
+
+// Helper function to check if introducerName is in any of the item.introducer names
+function isIntroducerInItem(introducer, itemIntroducer) {
+    const normalizedIntroducer = normalizeString(introducer);
+    // Split by comma and normalize each name
+    const introducers = itemIntroducer.split(',').map(name => normalizeString(name));
+    return introducers.some(name => name.includes(normalizedIntroducer));
+}
+
 // Function to display councilor information based on idcoun parameter
 async function displayDistrictInfo() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -34,8 +47,8 @@ async function displayDistrictInfo() {
             const honorHeading = document.createElement('h1');
             honorHeading.textContent = "HON.";
             
-             // Add some margin to the heading for spacing
-             honorHeading.style.marginRight = "3px"; // Adjust the value as needed
+            // Add some margin to the heading for spacing
+            honorHeading.style.marginRight = "3px"; // Adjust the value as needed
 
             // Insert the new h1 before the councilorEl
             councilorEl.parentNode.insertBefore(honorHeading, councilorEl);
@@ -48,7 +61,7 @@ async function displayDistrictInfo() {
 
             const committeeChair = committeeChairData.find(item => item.committeeChair === numericIdcoun);
             if (committeeChair) {
-                committeeChairEl.textContent = `Chairperson, ${committeeChair.committeeName}`;
+                committeeChairEl.textContent = `Chairperson, Committee on ${committeeChair.committeeName}`;
             } else {
                 committeeChairEl.textContent = 'No matching committee chair found';
             }
@@ -86,23 +99,17 @@ async function displayProposedMeasures() {
         const [councilorData, proposedData] = await Promise.all([fetchCouncilorsData(), fetchDataProposed()]);
         
         // Extract introducer names from councilor data
-        const introducerName = councilorInfoEl.textContent.trim(); // Get the introducer name from the councilor info element
-
-        // Helper function to check if introducerName is in item.introducer
-        function isIntroducerInItem(introducer, itemIntroducer) {
-            const introducers = itemIntroducer.split(',').map(name => name.trim());
-            return introducers.includes(introducer);
-        }
+        const introducerNames = councilorInfoEl.textContent.split(',').map(name => normalizeString(name).trim()); // Get and normalize all introducer names
 
         // Filter proposed data for ordinances and resolutions
         const filteredOrdinanceData = proposedData.filter(item => 
-            isIntroducerInItem(introducerName, item.introducer) &&
+            introducerNames.some(introducerName => isIntroducerInItem(introducerName, item.introducer)) &&
             item.spno !== "No Data" &&
             item.Type === "ORDINANCE"
         );
 
         const filteredResolutionData = proposedData.filter(item => 
-            isIntroducerInItem(introducerName, item.introducer) &&
+            introducerNames.some(introducerName => isIntroducerInItem(introducerName, item.introducer)) &&
             item.spno !== "No Data" &&
             item.Type === "RESOLUTION"
         );
@@ -162,4 +169,3 @@ document.addEventListener('DOMContentLoaded', async function() {
     await displayDistrictInfo();
     await displayProposedMeasures();
 });
-

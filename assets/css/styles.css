@@ -216,6 +216,16 @@ section {
 
 /* Generic styling */
 
+.content-orgchart h1 {
+  font-size: min(9vw,30px);
+}
+
+@media screen and (max-width: 576px) {
+  .content-orgchart h1 {
+    text-align: center;
+  }
+}
+
 .content-orgchart {
   display: inline;
   background-color: transparent;
@@ -269,7 +279,7 @@ a:focus {
 
 @media screen and (max-width: 767px) {
   .administration ul a {
-    font-size: .8em;
+    font-size: min(3vw, .8em);
   }
 }
 
@@ -305,7 +315,7 @@ a:focus {
   content: "";
   display: block;
   width: 0;
-  height: 130px;
+  height: 140px;
   background: red;
   border-left: 4px solid #fff;
   left: 45.50%;
@@ -318,7 +328,7 @@ a:focus {
 }
 
 .subdirector > li:first-child {
-  width: 18.59894921190893%;
+  width: 22%;
   height: 50px;
   margin: 0 auto 92px auto;
   padding-top: 15px;
@@ -327,10 +337,10 @@ a:focus {
 }
 
 .departments > li:first-child {
-  width: 18.59894921190893%;
-  height: 80px;
+  width: 23%;
+  height: 87px;
   margin: 0 auto 92px auto;
-  padding-top: 45px;
+  padding-top: 50px;
   border-bottom: 4px solid white;
   z-index: 1;
 }
@@ -343,8 +353,8 @@ a:focus {
 
 .departments > li:first-child {
   float: left;
-  left: 27.2%;
-  border-right: 4px solid white;
+  left: 20.2%;
+  border-right: 5px solid white;
 }
 
 .subdirector > li:first-child a, .departments > li:first-child a {
@@ -400,7 +410,7 @@ a:focus {
   border-right: 4px solid #fff;
   border-left: 4px solid #fff;
   margin: 0 auto;
-  top: 130px;
+  top: 140px;
   left: 14.8%;
 }
 
@@ -517,7 +527,7 @@ a:focus {
 
 @media screen and (max-width: 768px) {
   .group-head span {
-    margin-top: -1rem!important;
+    margin-top: -1.3rem!important;
   }
 }
 
@@ -618,14 +628,15 @@ a:focus {
 /* Navigation Bar Start */
 
 #nav-nav-a {
+  z-index: 100;
   width: 100%;
   height: auto;
-  z-index: 30;
   background: transparent;
   padding: 1rem;
 }
 
 nav .wrapper {
+  z-index: 100;
   background-color: transparent;
   position: relative;
   max-width: 1300px;
@@ -664,7 +675,7 @@ ul.nav-links {
   text-align: start;
   color: #000;
   text-decoration: none;
-  font-size: 18px;
+  font-size: min(4vw, 18px);
   font-weight: 500;
   padding: 5px 15px;
   border-radius: 5px;
@@ -722,7 +733,7 @@ ul.nav-links {
 
 .mega-box .content, .mega-boxnd .content {
   background: #f2f2f2;
-  padding: 25px 20px;
+  padding: 25px 25px;
   display: flex;
   width: 100%;
   align-items: start;
@@ -736,10 +747,11 @@ ul.nav-links {
 }
 
 .mega-box .content .row header, .mega-boxnd .content .row header {
-  text-shadow: 2px 2px 2px rgba(242, 242, 242, 1);
+  width: 100%;
+  text-shadow: 2px 2px 2px rgb(102, 101, 101);
   color: #000;
   font-weight: bolder;
-  font-size: 20px;
+  font-size: min(6vw, 20px);
   font-weight: 500;
 }
 
@@ -756,7 +768,7 @@ ul.nav-links {
   padding: 0px;
   padding: 0 20px;
   color: #000;
-  font-size: 17px;
+  font-size: min(4vw, 20px);
   display: block;
 }
 
@@ -992,12 +1004,12 @@ nav input {
 @keyframes out-animation {
   0% {
     transform: translateX(0%);
-    filter: blur(5px);
-    opacity: 0;
+    opacity: 1;
   }
   100% {
     transform: translateX(100%);
-    opacity: 1;
+    filter: blur(5px);
+    opacity: 0;
   }
 }
 
@@ -1014,7 +1026,11 @@ nav input {
 }
 
 .ban-animation {
-  animation: 1s out-animation , 1s enter-animation;
+  animation: 1s enter-animation ease;
+}
+
+.exit-ban-animation {
+  animation: 1s out-animation ease;
 }
 
 @media (prefers-reduced-motion) {
@@ -1164,6 +1180,7 @@ nav input {
 }
 
 .wrapper-content {
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1317,6 +1334,8 @@ nav input {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: fit-content;
 }
 
 .ossp-banner {
@@ -1324,11 +1343,11 @@ nav input {
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  width: 100%;
+  width: fit-content;
 }
 
 .ossp-heada {
-  font-size: x-large;
+  font-size: min(4vw, 25px);
   font-weight: bolder;
 }
 
@@ -1336,12 +1355,6 @@ nav input {
   display: none;
   font-size: 30px;
   margin: 0;
-}
-
-@media (max-width: 768px) {
-  .ossp-heada {
-    font-size: medium;
-  }
 }
 
 @media (max-width: 360px) {
@@ -1357,6 +1370,8 @@ nav input {
 }
 
 .oss-head-div {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin: 0rem 2rem 0rem;
   text-align: center;
@@ -1367,15 +1382,8 @@ nav input {
 }
 
 .ossp-headb {
-  font-size: x-large;
+  font-size: min(4vw, 25px);
   font-style: italic;
-}
-
-@media (max-width: 768px) {
-  .ossp-headb {
-    font-size: small;
-    font-style: italic;
-  }
 }
 
 #navcol {
@@ -1386,7 +1394,7 @@ nav input {
   z-index: 30;
 }
 
-/* Start NavigatioBar */
+/* Start NavigationBar */
 
 .navbar {
   --bs-navbar-padding-x: 0;
@@ -1665,7 +1673,7 @@ nav input {
 .services-content a {
   color: #000;
   text-decoration: none;
-  font-size: 30px;
+  font-size: min(4vw,30px);
   width: fit-content;
   height: auto;
   padding: 1rem 1rem 1rem;
@@ -1674,6 +1682,7 @@ nav input {
 
 .services-content p {
   padding: 1rem 2rem 1rem;
+  font-size: min(4vw,15px);
 }
 
 .entry-anims {
@@ -1683,7 +1692,6 @@ nav input {
 
 .read-more {
   width: 100%;
-  padding: 1em 2em;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -1692,7 +1700,7 @@ nav input {
   cursor: pointer;
   color: var(--ossp-lightblue);
   transition: all 1000ms;
-  font-size: 15px;
+  font-size: min(4vw, 17px);
   position: relative;
   overflow: hidden;
   outline: 2px solid var(--ossp-lightblue);
@@ -1759,6 +1767,12 @@ nav input {
   padding: 1rem;
 }
 
+@media (max-width: 576px) {
+  .row.row-session .col {
+    padding: 0;
+  }
+}
+
 .section-session {
   padding: 1rem 2rem 1rem;
   width: 100%;
@@ -1782,7 +1796,6 @@ nav input {
 }
 
 .calendar-col {
-  padding: 0;
   width: 100%;
   display: flex;
   margin: auto 0;
@@ -1821,19 +1834,21 @@ h3, h4, h5 {
 }
 
 .calendar-content {
+  display: flex;
   width: 100%;
   background-color: #fff;
   padding: 20px;
   padding-left: 10%;
   padding-right: 10%;
   overflow: hidden;
+  text-align: center;
 }
 
 @media (max-width: 576px) {
   .calendar-content {
     padding: 2px;
     padding-left: 3%;
-    padding-right: 3%;
+    padding-right: 1%;
   }
 }
 
@@ -1872,8 +1887,9 @@ h3, h4, h5 {
 }
 
 #table-body {
+  font-size: min(4vw, 15px);
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 #table-body .row {
@@ -1885,8 +1901,22 @@ h3, h4, h5 {
   padding-bottom: 1.3rem !important;
 }
 
+@media (max-width: 576px) {
+  #table-body .col {
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+    font-size: 11px;
+  }
+}
+
 #calendar-table {
   text-align: center;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .prev-button {
@@ -2072,7 +2102,7 @@ h3, h4, h5 {
   flex: 1 0 100%;
 }
 
-@media (max-width: 610px) {
+@media (max-width: 895px) {
   .row.row-proposed {
     flex-direction: column;
   }
@@ -2108,14 +2138,9 @@ h3, h4, h5 {
 
 .ul-group {
   width: 100%;
-  height: 50vh;
+  height: fit-content;
+  max-height: 50vh;
   overflow-y: auto;
-}
-
-@media (max-width: 576px) {
-  .ul-group {
-    height: fit-content;
-  }
 }
 
 .ul-group a {
@@ -2132,7 +2157,7 @@ h3, h4, h5 {
   padding: .5rem 1rem .3rem;
   width: 100%;
   height: fit-content;
-  font-size: 20px;
+  font-size: min(4vw,20px);
   margin: 0 0 .4rem;
   transition: all 0.3s;
   list-style-image: url("data:image/svg+xml,%3Csvg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M184.7,413.1l2.1-1.8l156.5-136c5.3-4.6,8.6-11.5,8.6-19.2c0-7.7-3.4-14.6-8.6-19.2L187.1,101l-2.6-2.3 C182,97,179,96,175.8,96c-8.7,0-15.8,7.4-15.8,16.6h0v286.8h0c0,9.2,7.1,16.6,15.8,16.6C179.1,416,182.2,414.9,184.7,413.1z' id='id_101' style='fill: rgb(59, 139, 234);'%3E%3C/path%3E%3C/svg%3E");
@@ -2140,8 +2165,6 @@ h3, h4, h5 {
 
 @media (max-width: 576px) {
   .ul-group li {
-    text-align: center;
-    font-size: 15px;
     padding: 0;
   }
 }
@@ -2207,15 +2230,9 @@ h3, h4, h5 {
   padding: 0;
   width: 100%;
   height: fit-content;
-  font-size: 20px;
+  font-size: min(4vw, 15px);
   margin-bottom: .5em;
   list-style-image: url("data:image/svg+xml,%3Csvg enable-background='new 0 0 32 32' id='Слой_1' version='1.1' viewBox='0 0 32 32' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Double_Chevron_Right'%3E%3Cpath d='M23.662,15.286l-6.9-6.999c-0.39-0.394-1.024-0.394-1.414,0c-0.391,0.394-0.391,1.034,0,1.428L21.544,16 l-6.196,6.285c-0.391,0.394-0.391,1.034,0,1.428c0.391,0.394,1.024,0.394,1.414,0l6.899-6.999 C24.038,16.335,24.039,15.666,23.662,15.286z' fill='%233b8bea' id='id_101'%3E%3C/path%3E%3Cpath d='M16.662,15.286L9.763,8.287c-0.391-0.394-1.024-0.394-1.414,0c-0.391,0.394-0.391,1.034,0,1.428L14.544,16 l-6.196,6.285c-0.391,0.394-0.391,1.034,0,1.428c0.391,0.394,1.024,0.394,1.414,0l6.899-6.999 C17.038,16.335,17.039,15.666,16.662,15.286z' fill='%233b8bea' id='id_102'%3E%3C/path%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E");
-}
-
-@media (max-width: 576px) {
-  .agenda-listing li {
-    font-size: 12px;
-  }
 }
 
 .agenda-listing li::marker {
@@ -2244,9 +2261,21 @@ h3, h4, h5 {
 .measure-wrapper {
   width: 100%;
   height: auto;
+  display: flex;
 }
 
-.col.details-col {
+.measure-wrapper a {
+  width: 100%;
+  height: 100%;
+}
+
+.agenda-head {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+}
+
+.details-col {
   width: 100%;
   height: 100%;
   display: flex;
@@ -2260,6 +2289,8 @@ h3, h4, h5 {
 }
 
 .details-card a {
+  width: 100%;
+  height: fit-content;
   text-decoration: none;
 }
 
@@ -2267,7 +2298,7 @@ h3, h4, h5 {
   flex: 0 0 100%;
   flex-direction: column;
   width: 100%;
-  max-width: 500px;
+  max-width: 576px;
   height: 430px;
   max-height: 530px;
   background-color: white;
@@ -2354,16 +2385,10 @@ h3, h4, h5 {
 }
 
 .sub-head {
+  font-size: min(4vw,25px);
   width: 100%;
   text-align: center;
   height: fit-content;
-  padding: 1rem 2rem 1rem;
-}
-
-@media (max-width: 576px) {
-  .sub-head {
-    font-size: 19px;
-  }
 }
 
 @media (max-width: 576px) {
@@ -3068,7 +3093,17 @@ footer {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.ctc-btn {
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+.popup-legs h5 {
+  font-size: min(5vw, 20px);
+  text-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
 .popup-content-legs {
+  border-radius: 5px;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
@@ -3076,6 +3111,11 @@ footer {
   width: 80%;
   max-width: 500px;
   position: relative;
+}
+
+.popup-content-legs strong {
+  font-size: min(4vw, 17px);
+  font-style: italic;
 }
 
 .table-section {
@@ -3087,14 +3127,14 @@ footer {
 }
 
 #table-body {
+  width: 100%;
+  height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-}
-
-table.table-row tr:hover td {
-  background-color: var(--bs-tertiary-color);
+  padding: 1rem 0rem 5rem;
 }
 
 td {
@@ -3120,10 +3160,16 @@ td::before {
 
 /* dropdown show settings */
 
+.dropdown {
+  width: 100%;
+  height: fit-content;
+}
+
 .dropdown-menu {
   pointer-events: auto;
   position: absolute;
   top: 2;
+  z-index: 1;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -3537,7 +3583,7 @@ ul.about-list {
 
 @media (max-width: 992px) {
   .tbl-head-section {
-    min-height: 50vh;
+    min-height: 10vh;
   }
 }
 
@@ -3551,13 +3597,22 @@ ul.about-list {
 }
 
 .container.container-legis-banner {
+  font-size: min(3vw, 15px);
   color: white;
+  flex-wrap: nowrap;
   display: flex;
   width: 100%;
   height: 100%;
   padding: 2rem;
   align-items: end;
   justify-content: start;
+}
+
+@media (max-width: 992px) {
+  .container.container-legis-banner {
+    padding: .4rem;
+    align-items: center;
+  }
 }
 
 .end-foot {
@@ -3714,6 +3769,7 @@ ul.about-list {
 
 .section-text {
   margin: 1rem 0 0 0;
+  font-size: min(3vw,30px);
 }
 
 .section-text li {
@@ -3780,6 +3836,7 @@ ul.about-list {
 }
 
 .section-head a, span {
+  font-size: min(3vw, 15px);
   padding: 0rem 1rem 0rem;
   color: #000;
   text-decoration: none;
@@ -4070,6 +4127,7 @@ ol.service-pledge-list {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+  text-shadow: 10px 12px 20px rgba(0,0,0,0.15);
 }
 
 .col.col-frontserv:nth-child(1) {
@@ -4133,7 +4191,7 @@ ol.service-pledge-list {
 .resource-content h1 {
   margin: 1rem 0rem 1rem;
   font-weight: bold;
-  font-size: 30px;
+  font-size: min(5vw, 30px);
   width: 100%;
   height: fit-content;
 }
@@ -4394,6 +4452,10 @@ ol.service-pledge-list {
   height: fit-content;
 }
 
+.councilor-content h1 {
+  font-size: min(5vw, 30px);
+}
+
 .legislative-wrapper {
   display: flex;
   align-items: center;
@@ -4419,6 +4481,12 @@ ol.service-pledge-list {
   background-color: var(--bs-tertiary-color);
 }
 
+@media screen and (max-width: 768px) {
+  .councilor-legislative {
+    padding: 1rem .5rem 1rem;
+  }
+}
+
 .councilor-legislative h1 {
   color: white;
 }
@@ -4428,15 +4496,83 @@ ol.service-pledge-list {
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .ord-res-wrapper {
     flex-direction: column;
+    text-align: center;
   }
 }
 
 /* Councilor */
+
+/* Committee */
+
+.commt-cont {
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+}
+
+.commi-reg-btn {
+  margin: 1rem 1rem 1rem;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 40%;
+  height: fit-content;
+}
+
+.commi-reg-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  transition: all .4s ease;
+}
+
+.commi-reg-btn:hover::after {
+  background-color: var(--ossp-lightblue);
+  width: 100%;
+}
+
+.commi-reg-btn:hover::after, .commi-reg-btn:focus::after {
+  background-color: var(--ossp-lightblue);
+  width: 100%;
+}
+
+.committee-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1rem 0rem 1rem;
+}
+
+.committee-content {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.committee-content a {
+  text-decoration: none;
+  color: #000;
+  padding-left: .5rem;
+}
+
+.committee-content a:hover {
+  color: var(--ossp-lightblue);
+}
+
+/* Committee */
 
